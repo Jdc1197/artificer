@@ -6,7 +6,7 @@ TCODDIR=../include/libtcod1.5.0
 
 OBJDIR=../objs
 
-CFLAGS=$(FLAGS) -I./include -I$(INCDIR) -I$(TCODDIR) -Wall -g -ansi -pedantic -std=c++0x
+CFLAGS=$(FLAGS) -I./include -I$(INCDIR) -I$(TCODDIR) -Wall -ansi -pedantic -std=c++0x
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
@@ -23,6 +23,7 @@ OBJS = 	$(OBJDIR)/Actions/ActionPickUp.o $(OBJDIR)/BasicItems.o \
 		$(OBJDIR)/Message.o $(OBJDIR)/Object.o \
 		$(OBJDIR)/Races.o $(OBJDIR)/Reference.o \
 		$(OBJDIR)/Spawn.o $(OBJDIR)/StandardItemFunctions.o \
+		$(OBJDIR)/Graphics/GraphicsPickup.o \
 
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
