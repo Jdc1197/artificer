@@ -47,8 +47,19 @@ void Game::Run()
 	}
 }
 
-void Game::OpenMenu(Menu * ToOpen) { CurrentMenu = ToOpen; MenuOpen = true; }
-void Game::CloseMenu() { delete CurrentMenu; CurrentMenu = nullptr; MenuOpen = false; }
+void Game::OpenMenu(Menu * ToOpen)
+{
+	CurrentMenu = ToOpen;
+	CurrentMenu->Init();
+	if (CurrentMenu != nullptr)
+		MenuOpen = true;
+}
+void Game::CloseMenu()
+{
+	delete CurrentMenu;
+	CurrentMenu = nullptr;
+	MenuOpen = false;
+}
 
 void Game::HandleInput(TCOD_key_t Key)
 {
