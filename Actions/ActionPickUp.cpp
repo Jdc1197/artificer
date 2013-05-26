@@ -8,9 +8,25 @@ ActionPickUp::ActionPickUp(int x, int y, Being * B)
 	if (MapReference::IsItemOnTile(x,y))
 	{
 		ItemList = MapReference::GetItemsOnTile(x,y);
+		// If there is only one item, pick it up and close the menu before it opens
+		if (ItemList.size() == 1)
+		{
+			PickupList.push_back(ItemList[0]);
+			Pickup();
+			Close = true;
+		}
+		else
+			Close = false;
 	}
 }
 
+void ActionPickUp::Init()
+{
+	if (Close)
+		GameReference::CloseMenu();
+}
+// ActionPickUp::Pickup()
+// Picks up all of the items in PickupList
 void ActionPickUp::Pickup()
 {
 	for (unsigned int i = 0; i < PickupList.size(); i++)

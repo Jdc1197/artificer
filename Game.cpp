@@ -25,7 +25,7 @@ void Game::Run()
 {
 	while (!TCODConsole::isWindowClosed())
 	{
-		if (MenuOpen)
+		if (MenuOpen && CurrentMenu != nullptr)
 			CurrentMenu->Draw();
 		else
 		{
@@ -40,7 +40,7 @@ void Game::Run()
 		GraphicsEngine.DisplayScreen();
 		
 		TCOD_key_t key = TCODConsole::waitForKeypress(true);
-		if (MenuOpen)
+		if (MenuOpen && CurrentMenu != nullptr)
 			CurrentMenu->HandleInput(key);
 		else
 			HandleInput(key);
@@ -93,17 +93,7 @@ void Game::HandleInput(TCOD_key_t Key)
 		OpenMenu(new MenuInventory(&Player->Inv));
 		break;
 	case 'g':
-		{
-			// If only 1 item on tile
-			if (CurrentMap.GetItemsOnTile(Player->GetX(), Player->GetY()).size() == 1)				
-				// Pick it up
-				Player->Send(CurrentMap.GetItemsOnTile(Player->GetX(), Player->GetY())[0], PICKUP);	
-			else if (CurrentMap.GetItemsOnTile(Player->GetX(), Player->GetY()).size() > 1)
-				// Open up the pickup menu
-				OpenMenu(new ActionPickUp(Player->GetX(), Player->GetY(), Player));					
-			else
-				return;
-		}
+		OpenMenu(new ActionPickUp(Player->GetX(), Player->GetY(), Player));					
 		break;
 	case 'd':
 		OpenMenu(new ActionDropItem());
