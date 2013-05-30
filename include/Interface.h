@@ -1,5 +1,6 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
+#include "ColoredString.h"
 #include <string>
 #include <sstream>
 #include <vector>
@@ -9,16 +10,16 @@ using namespace std;
 class Interface
 {
 private:
-	vector<string> Messages;
+	vector<ColoredString> Messages;
 public:
 	Interface();
-	Interface(string);
+	Interface(ColoredString);
 
 	void AddMessage(string);
 	void AddMessage(ostringstream*);
 	void AddMessage(const char *);
 
-	const char* GetMessage(int);
+	ColoredString GetMessage(int);
 };
 
 #endif

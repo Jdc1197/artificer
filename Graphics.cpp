@@ -1,5 +1,7 @@
 #include "Graphics.h"
+#include "Graphics/GraphicsColoredString.h"
 #include "BasicMapObject.h"
+
 
 // Constructors //
 Graphics::Graphics()
@@ -65,13 +67,8 @@ void Graphics::RenderPlayingScreen(Map* ToDraw)
 		Being* b = ToDraw->Beings[i];
 		DrawDisplayTile(b->GetX(), b->GetY(), b->GetTile(), GameMap);
 	}
-	
 	// Draw the graphical map onto the console
 	TCODConsole::root->blit(GameMap, 0, 0, GameMap->getWidth(), GameMap->getHeight(), TCODConsole::root, 0, 10);
-	/*for (int x = 0; x < MapWidth; x++)
-		for (int y = 0; y < MapHeight; y++)
-			DrawDisplayTile(x, y+10, GameMap[x][y]);*/
-	
 }
 
 // Renders the white borders around the interface //
@@ -95,13 +92,19 @@ void Graphics::RenderMessageWindow(Interface * UI)
 {
 	GameMessages->clear();
 	for (int i = 0; i < 9; i++)
-		GameMessages->printLeftRect(0, 8-i, GameMessages->getWidth(), GameMessages->getHeight(),TCOD_BKGND_NONE, UI->GetMessage(i));
+	{
+		GraphicsColoredString G(UI->GetMessage(i));
+		G.Draw(0, 8-i, GameMessages);
+		//GameMessages->printLeftRect(0, 8-i, GameMessages->getWidth(), GameMessages->getHeight(),TCOD_BKGND_NONE, UI->GetMessage(i));
+	}
 	TCODConsole::root->blit(GameMessages, 0, 0, GameMessages->getWidth(), GameMessages->getHeight(), TCODConsole::root, 1, 1);
 }
 
 // Shows the root console on the screen
 void Graphics::DisplayScreen()
 {
+	//GraphicsColoredString G("%[255,0,0]#%[255,255,0]#%[0,255,0]#%[0,255,255]#%[0,0,255]#");
+	//G.Draw(1,1);
 	// Show the console
 	TCODConsole::root->flush();
 }

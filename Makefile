@@ -23,7 +23,8 @@ OBJS = 	$(OBJDIR)/Actions/ActionPickUp.o $(OBJDIR)/BasicItems.o \
 		$(OBJDIR)/Message.o $(OBJDIR)/Object.o \
 		$(OBJDIR)/Races.o $(OBJDIR)/Reference.o \
 		$(OBJDIR)/Spawn.o $(OBJDIR)/StandardItemFunctions.o \
-		$(OBJDIR)/Graphics/GraphicsPickup.o \
+		$(OBJDIR)/Graphics/GraphicsPickup.o $(OBJDIR)/ColoredString.o \
+		$(OBJDIR)/Graphics/GraphicsColoredString.o \
 
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
@@ -39,7 +40,7 @@ debug : $(OBJS)
 
 #Release Build#
 release : $(OBJS)
-	$(CPP) $(OBJS) -O3 -o ../bin/scourge_of_westnor.exe -mwindows -L../lib -ltcod-mingw
+	$(CPP) $(OBJS) $(OBJDIR)/icon.res -O3 -o ../bin/scourge_of_westnor.exe -mwindows -L../lib -ltcod-mingw
 
 rebuild: rebuild_release
 

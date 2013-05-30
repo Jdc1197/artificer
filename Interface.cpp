@@ -2,12 +2,10 @@
 
 Interface::Interface()
 {
-	Messages.assign(9, "");
-	for (int i = 0; i < 9; i++)
-		Messages[i] = char(i+65);
+	Messages.assign(Messages.size(), ColoredString("%[255,0,0]#%[255,255,0]#%[0,255,0]#%[0,255,255]#%[0,0,255]#"));
 }
 
-Interface::Interface(std::string Message)
+Interface::Interface(ColoredString Message)
 {
 	Messages.assign(9, "");
 	Messages[0] = Message;
@@ -17,21 +15,21 @@ Interface::Interface(std::string Message)
 void Interface::AddMessage(string Message)
 {
 	Messages.erase(Messages.end()-1);
-	Messages.insert(Messages.begin(), Message);
+	Messages.insert(Messages.begin(), ColoredString(Message.c_str()));
 }
 void Interface::AddMessage(ostringstream* Message)
 {
 	Messages.erase(Messages.end()-1);
-	Messages.insert(Messages.begin(), Message->str());
+	Messages.insert(Messages.begin(), ColoredString(Message->str().c_str()));
 }
 void Interface::AddMessage(const char * Message)
 {
 	Messages.erase(Messages.end()-1);
-	Messages.insert(Messages.begin(), Message);
+	Messages.insert(Messages.begin(), ColoredString(Message));
 }
 
-const char * Interface::GetMessage(int MessageNumber)
+ColoredString Interface::GetMessage(int MessageNumber)
 {
-	const char * r = (MessageNumber >= 0 && MessageNumber < 9) ? Messages[MessageNumber].c_str() : "";
+	ColoredString r = (MessageNumber >= 0 && MessageNumber < 9) ? Messages[MessageNumber] : ColoredString("");
 	return r;
 }
