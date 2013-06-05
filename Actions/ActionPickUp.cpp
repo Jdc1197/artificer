@@ -1,10 +1,10 @@
 #include "Actions/ActionPickUp.h"
-#include "Graphics/GraphicsPickup.h"
 #include "Reference.h"
 
 ActionPickUp::ActionPickUp(int x, int y, Being * B)
 {
 	Sender = B;
+	Renderer = nullptr;
 	if (MapReference::IsItemOnTile(x,y))
 	{
 		ItemList = MapReference::GetItemsOnTile(x,y);
@@ -16,15 +16,23 @@ ActionPickUp::ActionPickUp(int x, int y, Being * B)
 			Close = true;
 		}
 		else
+		{	
 			Close = false;
+			Renderer = new GraphicsPickup(ItemList, &PickupList);
+		}
 	}
+	else
+		Close = true;
 }
+
+ActionPickUp::~ActionPickUp() { if (Renderer) delete Renderer; }
 
 void ActionPickUp::Init()
 {
 	if (Close)
 		GameReference::CloseMenu();
 }
+
 // ActionPickUp::Pickup()
 // Picks up all of the items in PickupList
 void ActionPickUp::Pickup()
@@ -59,6 +67,6 @@ void ActionPickUp::HandleInput(TCOD_key_t key)
 
 void ActionPickUp::Draw()
 {
-	GraphicsPickup G(ItemList, &PickupList);
-	G.Draw();
+	if (Renderer != nullptr)
+		Renderer->Draw();
 }

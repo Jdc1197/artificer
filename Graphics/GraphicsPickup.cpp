@@ -11,8 +11,8 @@ GraphicsPickup::GraphicsPickup(vector<Item*> Items, vector<Item*>* Pickup)
 
 void GraphicsPickup::Draw()
 {
-	TCODConsole::root->clear();
-	TCODConsole::root->printLeft(0, 0, TCOD_BKGND_NONE, "Inventory - Pick up items");
+	RootConsole->clear();
+	RootConsole->printLeft(0, 0, TCOD_BKGND_NONE, "Inventory - Pick up items");
 	
 	// Print items
 	for (unsigned int i = 0; i < ItemList.size(); i++)
@@ -23,6 +23,6 @@ void GraphicsPickup::Draw()
 		Item * I = ItemList[i];
 		if (IsInList<Item*>(PickupList, I))
 			Seperator = '+';
-		TCODConsole::root->printLeft(0, i+2, TCOD_BKGND_NONE, "%c %c %s", Identifier, Seperator, I->GetFullName());
+		RootConsole->printLeft(0, i+2, TCOD_BKGND_NONE, "%c %c %s", Identifier, Seperator, I->GetFullName());
 	}
 }

@@ -39,5 +39,5 @@ const char * Weapon::GetFullName()
 
 const char * Weapon::GetShortName()
 {
-	return "a weapon";
+	return "a %[255,90,8]weapon";
 }

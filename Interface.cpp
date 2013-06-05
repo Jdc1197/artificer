@@ -2,7 +2,7 @@
 
 Interface::Interface()
 {
-	Messages.assign(Messages.size(), ColoredString("%[255,0,0]#%[255,255,0]#%[0,255,0]#%[0,255,255]#%[0,0,255]#"));
+	Messages.assign(9, ColoredString("%[255,0,0]#%[255,255,0]#%[0,255,0]#%[0,255,255]#%[0,0,255]#"));
 }
 
 Interface::Interface(ColoredString Message)

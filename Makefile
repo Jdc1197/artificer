@@ -6,7 +6,7 @@ TCODDIR=../include/libtcod1.5.0
 
 OBJDIR=../objs
 
-CFLAGS=$(FLAGS) -I./include -I$(INCDIR) -I$(TCODDIR) -Wall -ansi -pedantic -std=c++0x
+CFLAGS=$(FLAGS) -I./include -I$(INCDIR) -I$(TCODDIR) -g -Wall -ansi -pedantic -std=c++0x
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
@@ -14,8 +14,8 @@ CPP=g++
 OBJS = 	$(OBJDIR)/Actions/ActionPickUp.o $(OBJDIR)/BasicItems.o \
 		$(OBJDIR)/BasicMapObject.o $(OBJDIR)/Being.o \
 		$(OBJDIR)/DisplayTile.o $(OBJDIR)/Game.o \
-		$(OBJDIR)/Graphics.o $(OBJDIR)/Interface.o \
-		$(OBJDIR)/Inventory.o $(OBJDIR)/InventoryGraphics.o \
+		$(OBJDIR)/Interface.o \
+		$(OBJDIR)/Inventory.o $(OBJDIR)/Graphics/GraphicsInventory.o \
 		$(OBJDIR)/Item.o $(OBJDIR)/ItemContainer.o \
 		$(OBJDIR)/Main.o $(OBJDIR)/Map.o \
 		$(OBJDIR)/MapObject.o $(OBJDIR)/Menu.o \
@@ -24,7 +24,9 @@ OBJS = 	$(OBJDIR)/Actions/ActionPickUp.o $(OBJDIR)/BasicItems.o \
 		$(OBJDIR)/Races.o $(OBJDIR)/Reference.o \
 		$(OBJDIR)/Spawn.o $(OBJDIR)/StandardItemFunctions.o \
 		$(OBJDIR)/Graphics/GraphicsPickup.o $(OBJDIR)/ColoredString.o \
-		$(OBJDIR)/Graphics/GraphicsColoredString.o \
+		$(OBJDIR)/Graphics/GraphicsColoredString.o $(OBJDIR)/Graphics/Graphics.o \
+		$(OBJDIR)/Graphics/GraphicsInterface.o $(OBJDIR)/Graphics/GraphicsMap.o \
+		$(OBJDIR)/Graphics/GraphicsBorders.o $(OBJDIR)/Graphics/GraphicsDrop.o \
 
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
@@ -47,7 +49,7 @@ rebuild: rebuild_release
 rebuild_release: clean_objs release
 rebuild_debug: clean_objs debug
 	
-	
+
 #Cleaning#
 clean : clean_objs clean_bin
 
@@ -56,3 +58,10 @@ clean_objs:
 clean_bin:
 	rm -f ../bin/scourge_of_westnor.exe
 	rm -f ../bin/scourge_of_westnor_d.exe
+	
+	
+#Documentation#
+doc: documentation
+documentation:
+	cd ..
+	doxygen ../doxygen_config.cfg

@@ -1,5 +1,6 @@
 #ifndef GRAPHICSCOLOREDSTRING_H
 #define GRAPHICSCOLOREDSTRING_H
+#include "Graphics/Graphics.h"
 #include "ColoredString.h"
 
 // class GraphicsColoredString

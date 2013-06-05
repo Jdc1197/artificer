@@ -1,15 +1,16 @@
 #include "MenuInventory.h"
-#include "InventoryGraphics.h"
+#include "Graphics/GraphicsInventory.h"
 #include "Game.h"
 #include "Reference.h"
 
 
 MenuInventory::MenuInventory(Inventory* Inv) { this->Inv = Inv; }
-MenuInventory::~MenuInventory() { GameRef::CloseMenu(); }
+MenuInventory::~MenuInventory() {/*GameReference::CloseMenu();*/}
 
 void MenuInventory::Draw() 
 {
-	InventoryGraphics::DrawInventory(Inv, "Viewing Inventory");
+	GraphicsInventory InventoryRenderer(Inv, "Viewing Inventory");
+	InventoryRenderer.Draw();
 }
 
 void MenuInventory::HandleInput(TCOD_key_t Key)

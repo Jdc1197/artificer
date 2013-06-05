@@ -6,6 +6,10 @@ Defines the GameReference class
 #ifndef GAMEREFERENCE_H
 #define GAMEREFERENCE_H
 #include "Game.h"
+
+#include "Graphics/GraphicsMap.h"
+#include "Graphics/GraphicsBorders.h"
+#include "Graphics/GraphicsInterface.h"
 using namespace std;
 
 class Reference
@@ -25,16 +29,18 @@ public:
 	static void SetGameInstance(Game *);
 	
 	// Access Methods
-	static Being * GetPlayer();
+	static Being* GetPlayer();
+	static Map* GetMap();
+	static Interface* GetInterface();
 
 	// Method Mirrors
 	static void OpenMenu(Menu*);
 	static void CloseMenu();
+	static void DrawSubconsoles();
 };
 
-/* class MapReference : public Reference
-	A static class which mirrors the game's map methods
-*/
+// class MapReference : public Reference
+// A static class which mirrors the game's map methods
 class MapReference : public Reference
 {
 public:

@@ -1,7 +1,8 @@
-#include "Actions/ActionDropItem.h"
+#include "Actions/ActionDrop.h"
+#include "Graphics/GraphicsDrop.h"
 #include "Reference.h"
 
-void ActionDropItem::HandleInput(TCOD_key_t key)
+void ActionDrop::HandleInput(TCOD_key_t key)
 {
 	if (key.vk != TCODK_ESCAPE)			// Cancels operation when escape is pressed
 	{
@@ -13,16 +14,8 @@ void ActionDropItem::HandleInput(TCOD_key_t key)
 	GameReference::CloseMenu();
 }
 
-void ActionDropItem::Draw()
+void ActionDrop::Draw()
 {
-	Inventory * Inv = &GameReference::GetPlayer()->Inv;
-	if (Inv->GetSize() > 0)
-	{
-		char lowest, highest;
-		lowest = Inv->GetLowestIdentifier();
-		highest = Inv->GetHighestIdentifier();
-		TCODConsole::root->printLeft(1, 10, TCOD_BKGND_SET, "What do you wish to drop? (%c-%c)", lowest, highest);
-	}
-	else
-		TCODConsole::root->printLeft(1, 10, TCOD_BKGND_SET, "What do you wish to drop? (Empty)");
+	GraphicsDrop Renderer(&GameReference::GetPlayer()->Inv);
+	Renderer.Draw();
 }

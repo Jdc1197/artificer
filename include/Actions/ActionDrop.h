@@ -3,7 +3,7 @@
 #include "Menu.h"
 #include "Item.h"
 
-class ActionDropItem : public Menu
+class ActionDrop : public Menu
 {
 public:
 	virtual void HandleInput(TCOD_key_t);

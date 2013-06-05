@@ -2,7 +2,7 @@
 #define GAME_H
 #include "Being.h"
 #include "Map.h"
-#include "Graphics.h"
+#include "Graphics/Graphics.h"
 #include "Spawn.h"
 #include "Interface.h"
 #include "Menu.h"
@@ -14,11 +14,12 @@ private:
 	bool MenuOpen;
 
 	void HandleInput(TCOD_key_t);
+	Graphics* MapRenderer;
+	Graphics* BorderRenderer;
+	Graphics* InterfaceRenderer;
 public:
-	Map CurrentMap;
+	Map* CurrentMap;
 	Interface GameInterface;
-	Graphics GraphicsEngine;
-	
 	Being * Player;
 	Menu * CurrentMenu;
 
@@ -29,6 +30,7 @@ public:
 
 	void OpenMenu(Menu*);
 	void CloseMenu();
+	void DrawSubconsoles();
 };
 
 #endif
