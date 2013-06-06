@@ -1,5 +1,5 @@
-#include <Windows.h>
 #include <iostream>
+#include <assert.h>
 #include "Game.h"
 
 // Actions //
@@ -12,14 +12,19 @@
 #include "Graphics/GraphicsInterface.h"
 #include "Graphics/GraphicsBorders.h"
 
+// Map Generators //
+#include "MapGenerators/CaveGenerator.h"
+
 Game::Game()
 {
 	Player = SpawnBeing(BeingHuman, 0);
 	CurrentMenu = nullptr;
 	MenuOpen = false;
-	CurrentMap = new Map;
-	CurrentMap->AddBeing(Player, 1, 1);
+	MapGenerator::CaveGenerator Generator(Player);
+	CurrentMap = Generator.GenerateMap();
 	this->Debug = false;
+	
+	// Initialize Graphics //
 	Graphics::Init();
 	MapRenderer = new GraphicsMap(CurrentMap);
 	InterfaceRenderer = new GraphicsInterface(&GameInterface);
@@ -64,6 +69,8 @@ void Game::DrawSubconsoles()
 	InterfaceRenderer->Draw();
 	BorderRenderer->Draw();
 }
+
+Being* Game::GetPlayer() { return Player; }
 void Game::OpenMenu(Menu * ToOpen)
 {
 	CurrentMenu = ToOpen;
@@ -110,7 +117,7 @@ void Game::HandleInput(TCOD_key_t Key)
 		OpenMenu(new MenuInventory(&Player->Inv));
 		break;
 	case 'g':
-		OpenMenu(new ActionPickUp(Player->GetX(), Player->GetY(), Player));					
+		OpenMenu(new ActionPickUp(Player->GetX(), Player->GetY(), Player));	
 		break;
 	case 'd':
 		OpenMenu(new ActionDrop());

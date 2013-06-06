@@ -7,7 +7,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	TCODConsole::setCustomFont("terminal8x12_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW );
 	TCODConsole::initRoot(80, 50, "Scourge of Westnor", false);
-	
+
 	Game CurrentInstance;
 	Reference::SetGameInstance(&CurrentInstance);
 	CurrentInstance.Run();

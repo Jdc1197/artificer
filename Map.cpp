@@ -1,30 +1,9 @@
+#include <assert.h>
 #include "Map.h"
 #include "Spawn.h"
-#include <Windows.h>
 
-Map::Map()
-{
-	// Fill the whole screen with floor tiles
-	for (int x = 0; x < MapWidth; x++)
-		for (int y = 0; y < MapHeight; y++)
-			SetTile(SpawnMap(MapFloor), x, y);	
 
-	// Horizontal Walls
-	for (int x = 0; x < MapWidth; x++)
-	{
-		SetTile(SpawnMap(MapWall), x, 0);
-		SetTile(SpawnMap(MapWall), x, MapHeight-1);
-	}
-
-	// Vertical Walls
-	for (int y = 0; y < MapHeight; y++)
-	{
-		SetTile(SpawnMap(MapWall), 0, y);
-		SetTile(SpawnMap(MapWall), MapWidth-1, y);
-	}
-	for (int i = 0; i < 53; i++)
-		AddItem(SpawnItem(ItemWeapon,0),i+1, 10);
-}
+Map::Map() {}
 Map::~Map()
 {
 	// Deallocate MapCell array
@@ -62,6 +41,7 @@ Map::~Map()
 
 void Map::SetTile(MapObject * ToSpawn, int x, int y)
 {
+	assert(x > -1 && x < MapWidth && y > -1 && y < MapHeight);
 	MapCell[x][y] = ToSpawn;
 	ToSpawn->Move(x,y);
 }

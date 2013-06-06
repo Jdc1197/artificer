@@ -8,7 +8,7 @@ bool Reference::SetGameInstance(Game * Instance)
 	return (Instance != nullptr);
 }
 
-Being* GameReference::GetPlayer() { return GameInstance->Player; }
+Being* GameReference::GetPlayer() { /*GameInstance->GetPlayer()->GetX();*/ return GameInstance->GetPlayer(); }
 Map* GameReference::GetMap() { return GameInstance->CurrentMap; }
 Interface* GameReference::GetInterface() { return &GameInstance->GameInterface; }
 

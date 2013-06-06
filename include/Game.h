@@ -20,12 +20,14 @@ private:
 public:
 	Map* CurrentMap;
 	Interface GameInterface;
-	Being * Player;
-	Menu * CurrentMenu;
+	Being* Player;
+	Menu* CurrentMenu;
 
 	Game();
 	~Game();
 
+	Being* GetPlayer();
+	
 	void Run();
 
 	void OpenMenu(Menu*);

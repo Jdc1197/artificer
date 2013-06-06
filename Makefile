@@ -27,6 +27,7 @@ OBJS = 	$(OBJDIR)/Actions/ActionPickUp.o $(OBJDIR)/BasicItems.o \
 		$(OBJDIR)/Graphics/GraphicsColoredString.o $(OBJDIR)/Graphics/Graphics.o \
 		$(OBJDIR)/Graphics/GraphicsInterface.o $(OBJDIR)/Graphics/GraphicsMap.o \
 		$(OBJDIR)/Graphics/GraphicsBorders.o $(OBJDIR)/Graphics/GraphicsDrop.o \
+		$(OBJDIR)/MapGenerators/CaveGenerator.o \
 
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
