@@ -39,11 +39,11 @@ all : release
 
 #Debug Build#
 debug : $(OBJS)
-	$(CPP) $(OBJS) -g -o ../bin/scourge_of_westnor_d.exe -mwindows -L../lib -ltcod-mingw-debug
+	$(CPP) $(OBJS) -g -o ../bin/artificer_d.exe -mwindows -L../lib -ltcod-mingw-debug
 
 #Release Build#
 release : $(OBJS)
-	$(CPP) $(OBJS) $(OBJDIR)/icon.res -O3 -o ../bin/scourge_of_westnor.exe -mwindows -L../lib -ltcod-mingw
+	$(CPP) $(OBJS) $(OBJDIR)/icon.res -O3 -o ../bin/artificer.exe -mwindows -L../lib -ltcod-mingw
 
 rebuild: rebuild_release
 
