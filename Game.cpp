@@ -110,28 +110,28 @@ void Game::HandleInput(TCOD_key_t Key)
 	switch (Key.c)
 	{
 	case 'h':
-		Player->Send(CurrentMap->MapCell[Player->GetX()-1][Player->GetY()],   MOVE); 
+		Player->Send(CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()),   MOVE); 
 		break;
 	case 'j':
-		Player->Send(CurrentMap->MapCell[Player->GetX()][Player->GetY()+1],   MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX(),Player->GetY()+1),   MOVE);
 		break;
 	case 'k':
-		Player->Send(CurrentMap->MapCell[Player->GetX()][Player->GetY()-1],   MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX(),Player->GetY()-1),   MOVE);
 		break;
 	case 'l':
-		Player->Send(CurrentMap->MapCell[Player->GetX()+1][Player->GetY()],   MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()),   MOVE);
 		break;
 	case 'y':
-		Player->Send(CurrentMap->MapCell[Player->GetX()-1][Player->GetY()-1], MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()-1), MOVE);
 		break;
 	case 'u':
-		Player->Send(CurrentMap->MapCell[Player->GetX()+1][Player->GetY()-1], MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()-1), MOVE);
 		break;
 	case 'n':
-		Player->Send(CurrentMap->MapCell[Player->GetX()+1][Player->GetY()+1], MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()+1), MOVE);
 		break;
 	case 'b':
-		Player->Send(CurrentMap->MapCell[Player->GetX()-1][Player->GetY()+1], MOVE);
+		Player->Send(CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()+1), MOVE);
 		break;
 	case 'i':
 		OpenMenu(new MenuInventory(&Player->Inv));

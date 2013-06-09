@@ -32,9 +32,9 @@ namespace MapGenerator
 		for (int x = 0; x < MapWidth; x++)
 			for (int y = 0; y < MapHeight; y++)
 			if (binmap->map[x][y] == true)
-				map->SetTile(SpawnMap(true_type), x, y);
+				map->SetMapCell(SpawnMap(true_type), x, y);
 			else
-				map->SetTile(SpawnMap(false_type), x, y);
+				map->SetMapCell(SpawnMap(false_type), x, y);
 	}
 	
 	void RoundBinaryMap(BinaryMap* binmap, int iterations)
@@ -102,7 +102,7 @@ namespace MapGenerator
 		for (int x = 0; x < MapWidth; x++)
 			for (int y = 0; y < MapHeight; y++)
 				binmap.map[x][y] = TCODRandom::getInstance()->getInt(0,100) > 50 ? true : false;
-		RoundBinaryMap(&binmap, 100);
+		RoundBinaryMap(&binmap, 5);
 		Map* map = new Map;
 		TranscribeBinaryMap(map, &binmap, MapWall, MapFloor);		
 		map->AddBeing(player, 10, 10);

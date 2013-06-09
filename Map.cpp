@@ -59,12 +59,22 @@ Map::~Map()
 	}
 }
 
-void Map::SetTile(MapObject * ToSpawn, int x, int y)
+
+MapObject* Map::GetMapCell(int x, int y)
+{
+	// If the co-ordinates are in range
+	if (!(x > MapWidth ||  x < 0 || y > MapHeight || y < 0))
+		return MapCell[x][y];
+	else
+		return nullptr;
+}
+void Map::SetMapCell(MapObject * ToSpawn, int x, int y)
 {
 	assert(x > -1 && x < MapWidth && y > -1 && y < MapHeight);
 	MapCell[x][y] = ToSpawn;
 	ToSpawn->Move(x,y);
 }
+
 void Map::AddBeing(Being *ToSpawn, int x, int y)
 {
 	ToSpawn->Move(x,y);
