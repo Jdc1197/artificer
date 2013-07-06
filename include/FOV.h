@@ -18,19 +18,14 @@
 	Contact Jdc1197 by email at: Jdc1197@gmail.com
 */
 
-#ifndef GRAPHICSMAP_H
-#define GRAPHICSMAP_H
-#include "Graphics/Graphics.h"
+#ifndef FOV_H
+#define FOV_H
 #include "Map.h"
 
-class GraphicsMap : public Graphics
+class FOV
 {
-private:
-	Map * ToDraw;
-	BinaryMap FOVMap;
 public:
-	GraphicsMap(Map*, BinaryMap);
-	virtual void Draw();
+	static BinaryMap GetFOVMap(int, int, int, Map*);
 };
 
 #endif

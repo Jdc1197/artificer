@@ -22,6 +22,12 @@
 #include "Map.h"
 #include "Spawn.h"
 
+void BuildTCODMap(Map* m, TCODMap* tcodmap)
+{
+	for (int x = 0; x < MapWidth; x++)
+		for (int y = 0; y < MapHeight; y++)
+			tcodmap->setProperties(x,y, m->GetMapCell(x,y)->GetTransparent(), m->GetMapCell(x,y)->GetWalkable());
+}
 
 Map::Map() {}
 Map::~Map()

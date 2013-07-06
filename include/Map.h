@@ -81,6 +81,6 @@ public:
 	vector<Item*> GetItemsOnTile(int x, int y);		
 };
 
-
+void BuildTCODMap(Map*, TCODMap*);
 
 #endif

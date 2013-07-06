@@ -22,6 +22,8 @@
 #include <assert.h>
 #include "Game.h"
 
+#include "FOV.h"
+
 // Actions //
 #include "MenuInventory.h"
 #include "Actions/ActionDrop.h"
@@ -46,7 +48,6 @@ Game::Game()
 	
 	// Initialize Graphics //
 	Graphics::Init();
-	MapRenderer = new GraphicsMap(CurrentMap);
 	InterfaceRenderer = new GraphicsInterface(&GameInterface);
 	BorderRenderer = new GraphicsBorders();
 }
@@ -69,6 +70,11 @@ void Game::Run()
 			CurrentMenu->Draw();
 		else
 		{
+			// Compute the FOV
+			BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), -1, CurrentMap);
+			// Draw the map
+			delete MapRenderer;
+			MapRenderer = new GraphicsMap(CurrentMap, FOVMap);
 			DrawSubconsoles();
 			Graphics::BlitSubconsoles();
 		}
