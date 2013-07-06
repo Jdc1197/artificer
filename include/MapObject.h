@@ -20,14 +20,19 @@
 
 #ifndef MAPOBJECT_H
 #define MAPOBJECT_H
-
 #include "Object.h"
 
+/// A single cell on a Map
 class MapObject : public Object
 {
 public:
 	MapObject();
-	bool HandleTick;
+	/// Returns the HANDLETICK flag
+	virtual bool GetHandleTick();
+	/// Returns the WALKABLE flag
+	virtual bool GetWalkable();
+	/// Returns the TRANSPARENT flag
+	virtual bool GetTransparent();
 };
 
 #endif

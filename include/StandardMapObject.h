@@ -18,9 +18,31 @@
 	Contact Jdc1197 by email at: Jdc1197@gmail.com
 */
 
+#ifndef STANDARDMAPOBJECT_H
+#define STANDARDMAPOBJECT_H
+#include <stdint.h>
 #include "MapObject.h"
 
-MapObject::MapObject() {}
-bool MapObject::GetHandleTick() { return false; }
-bool MapObject::GetWalkable() { return true; }
-bool MapObject::GetTransparent() { return true; }
+enum class MapObjectFlag
+{
+	Walkable = 0x01;
+	Transparent = 0x02;
+	HandleTick = 0x04;
+};
+
+class StandardMapObject : public MapObject
+{
+protected:
+	uint8_t BinaryProperties;
+public:
+	bool GetWalkable();
+	bool GetTransparent();
+	bool GetHandleTick();
+	
+	void SetWalkable(bool);
+	void SetTransparent(bool);
+	void SetHandleTick(bool);
+	void SetFlag(uint8_t);
+};
+
+#endif

@@ -26,7 +26,8 @@
 class Floor : public MapObject
 {
 private:
-	std::string MakeItemList();		//Constructs a string diplaying all of the items on the tile
+	/// Constructs a string diplaying all of the items on the tile
+	std::string MakeItemList();
 public:
 	Floor();
 	virtual DisplayTile GetTile();
@@ -40,6 +41,7 @@ public:
 	Wall();
 	virtual DisplayTile GetTile();
 	virtual void Recieve(Message, Being *);
+	virtual bool GetTransparent();
 };
 
 class Door : public MapObject

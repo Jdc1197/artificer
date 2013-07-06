@@ -27,10 +27,7 @@
 
 
 // Floors
-Floor::Floor()
-{
-	HandleTick = false;
-}
+Floor::Floor() {}
 void Floor::Recieve(Message msg, Being * Sender)
 {
 	if (msg.Type == MOVE)
@@ -68,10 +65,7 @@ std::string Floor::MakeItemList()
 
 
 // Walls
-Wall::Wall()
-{
-	HandleTick = false;
-}
+Wall::Wall() {}
 
 void Wall::Recieve(Message msg, Being * Sender)
 {
@@ -84,11 +78,12 @@ DisplayTile Wall::GetTile()
 	return DisplayTile('#', TCODColor::white, TCODColor::white);
 }
 
+bool Wall::GetTransparent() {return false;}
+
 
 // Doors
 Door::Door()
 {
-	HandleTick = false;
 	Open = false;
 }
 
