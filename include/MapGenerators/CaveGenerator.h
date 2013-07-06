@@ -32,11 +32,6 @@ namespace MapGenerator
 		int height;
 	};
 	
-	struct BinaryMap
-	{
-		bool map[MapWidth][MapHeight];
-	};
-	
 	void TranscribeBinaryMap(Map*, BinaryMap, ObjectID, ObjectID);
 	void RoundBinaryMap(BinaryMap*, int);
 	

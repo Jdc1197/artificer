@@ -30,6 +30,12 @@ using namespace std;
 const int MapWidth = 80;
 const int MapHeight = 40;
 
+/// A Map container which store binary information rather than actual MapObjects
+struct BinaryMap
+{
+	bool map[MapWidth][MapHeight];
+};
+
 /// A Map container.
 class Map
 {
@@ -74,5 +80,7 @@ public:
 	/// Returns a list of Items on a tile
 	vector<Item*> GetItemsOnTile(int x, int y);		
 };
+
+
 
 #endif
