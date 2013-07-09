@@ -21,9 +21,9 @@
 #ifndef BASICITEMS_H
 #define BASICITEMS_H
 #include "Item.h"
-#include "StandardItemFunctions.h"
+#include "StandardItem.h"
 
-class Weapon : public StandardItemFunctions
+class Weapon : public StandardItem
 {
 public:
 	Weapon();

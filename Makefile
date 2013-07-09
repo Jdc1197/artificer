@@ -6,7 +6,7 @@ TCODDIR=../include/libtcod1.5.0
 
 OBJDIR=../objs
 
-CFLAGS=$(FLAGS) -I./include -I$(INCDIR) -I$(TCODDIR) -g -Wall -ansi -pedantic -std=c++0x
+CFLAGS=$(FLAGS) -I./include -I$(INCDIR) -I$(TCODDIR) -O3 -Wall -ansi -pedantic -std=c++0x
 CC=gcc
 CPP=g++
 .SUFFIXES: .o .h .c .hpp .cpp
@@ -22,12 +22,12 @@ OBJS = 	$(OBJDIR)/Actions/ActionPickUp.o $(OBJDIR)/BasicItems.o \
 		$(OBJDIR)/Actions/ActionDrop.o $(OBJDIR)/MenuInventory.o \
 		$(OBJDIR)/Message.o $(OBJDIR)/Object.o \
 		$(OBJDIR)/Races.o $(OBJDIR)/Reference.o \
-		$(OBJDIR)/Spawn.o $(OBJDIR)/StandardItemFunctions.o \
+		$(OBJDIR)/Spawn.o $(OBJDIR)/StandardItem.o \
 		$(OBJDIR)/Graphics/GraphicsPickup.o $(OBJDIR)/ColoredString.o \
 		$(OBJDIR)/Graphics/GraphicsColoredString.o $(OBJDIR)/Graphics/Graphics.o \
 		$(OBJDIR)/Graphics/GraphicsInterface.o $(OBJDIR)/Graphics/GraphicsMap.o \
 		$(OBJDIR)/Graphics/GraphicsBorders.o $(OBJDIR)/Graphics/GraphicsDrop.o \
-		$(OBJDIR)/MapGenerators/CaveGenerator.o \
+		$(OBJDIR)/MapGenerators/CaveGenerator.o $(OBJDIR)/FOV.o\
 
 
 $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
