@@ -71,7 +71,7 @@ void Game::Run()
 		else
 		{
 			// Compute the FOV
-			BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), -1, CurrentMap);
+			BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), 15, CurrentMap);
 			// Draw the map
 			delete MapRenderer;
 			MapRenderer = new GraphicsMap(CurrentMap, FOVMap);
