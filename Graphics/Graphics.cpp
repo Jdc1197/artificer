@@ -28,8 +28,6 @@ Graphics::Graphics() {}
 
 void Graphics::Init()
 {
-	TCODConsole::setCustomFont("terminal8x12_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW );
-	TCODConsole::initRoot(80, 50, "Artificer: Pre-alpha", false);
 	ScreenGame = new TCODConsole(80, 40);
 	ScreenMessages = new TCODConsole(78, 10);
 	RootConsole = new TCODConsole(80, 50);
