@@ -37,7 +37,7 @@ struct BinaryMap
 };
 
 /// A Map container.
-class Map
+class Map : public TimableObject
 {
 private:
 	///Array of MapObjects which make up the map
@@ -63,6 +63,9 @@ public:
 	MapObject* GetMapCell(int,int);
 	/// Sets a MapObject
 	void SetMapCell(MapObject*, int, int);	
+	
+	// Inherited Methods //
+	virtual void ElapseTime(float);
 	
 	// Methods //
 	/// Adds a Being to the Map

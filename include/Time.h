@@ -17,26 +17,50 @@
 
 	Contact Jdc1197 by email at: Jdc1197@gmail.com
 */
+#ifndef TIME_H
+#define TIME_H
 
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#include "Message.h"
+#include <vector>
 
-enum MessageType
+using std::vector;
+using std::iterator;
+class Object;
+class Being;
+
+
+struct TimedEvent
 {
-	MSGNULL = 0,
-	ASSUME_CONTROL,	// Gives control to the being after his last move
-	MOVE,		// Movement
-	PICKUP,		// Pick up item
-	DROP,		// Drop item
-	CHAT		// Chat with being
+	Being* Sender;
+	Object* Receiver;
+	float Delay;
+	Message Msg;
 };
 
-class Message
+/// A class which manages the time system
+class TimeManager
+{
+private:
+	/// List of TimedEvent
+	vector<TimedEvent> EventList;
+	/// Sorts the EventList by delay using Insertion Sort
+	void SortEventList();
+public:
+	/// Adds a TimedEvent into the EventList
+	void AddEvent(TimedEvent);
+	/// Executes the next TimedEvent in the event list
+	/// \returns The TimedEvent executed
+	TimedEvent ExecuteNextEvent();
+	/// Checks if a being has a TimedEvent in the list
+	bool IsInList(Being*);
+};
+
+
+class TimableObject
 {
 public:
-	Message();
-	Message(MessageType Type);
-	MessageType Type;
+	virtual void ElapseTime(float);
 };
+
 
 #endif

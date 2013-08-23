@@ -20,6 +20,11 @@
 
 #include "Message.h"
 
+Message::Message()
+{
+	Type = MSGNULL;
+}
+
 Message::Message(MessageType type)
 {
 	Type = type;

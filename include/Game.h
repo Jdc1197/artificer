@@ -20,6 +20,7 @@
 
 #ifndef GAME_H
 #define GAME_H
+#include "Time.h"
 #include "Being.h"
 #include "Map.h"
 #include "Graphics/Graphics.h"
@@ -27,6 +28,7 @@
 #include "Interface.h"
 #include "Menu.h"
 
+/// A running instance of the game.
 class Game
 {
 private:
@@ -34,14 +36,22 @@ private:
 	bool MenuOpen;
 
 	void HandleInput(TCOD_key_t);
+	
+	/// Renderer for the map
 	Graphics* MapRenderer;
+	/// Renderer for the screen borders
 	Graphics* BorderRenderer;
+	/// Renderer for the interface
 	Graphics* InterfaceRenderer;
+	
+	/// The engine for managing time
+	TimeManager TimeEngine;
 public:
 	Map* CurrentMap;
 	Interface GameInterface;
 	Being* Player;
 	Menu* CurrentMenu;
+	
 
 	Game();
 	~Game();
@@ -49,10 +59,15 @@ public:
 	Being* GetPlayer();
 	
 	void Run();
-
+	// Menu Methods
 	void OpenMenu(Menu*);
 	void CloseMenu();
+	
+	// Graphics Methods
 	void DrawSubconsoles();
+	
+	// Time Methods
+	void AddEvent(float, Message, Being*, Object*);
 };
 
 #endif

@@ -28,7 +28,7 @@ class Being : public Object
 {
 public:
 	Being();
-	void Send(Object *, Message);
+	void Send(float, Message, Object*);
 	Inventory Inv;
 };
 

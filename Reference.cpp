@@ -35,6 +35,7 @@ Interface* GameReference::GetInterface() { return &GameInstance->GameInterface; 
 void GameReference::OpenMenu(Menu* MenuToOpen) { GameInstance->OpenMenu(MenuToOpen); }
 void GameReference::CloseMenu() { GameInstance->CloseMenu(); }
 void GameReference::DrawSubconsoles() { GameInstance->DrawSubconsoles(); }
+void GameReference::AddEvent(float delay, Message msg, Being* sender, Object* receiver) { GameInstance->AddEvent(delay, msg, sender, receiver); }
 
 bool MapReference::IsItemOnTile(int x, int y) { return GameInstance->CurrentMap->IsItemOnTile(x,y); }
 bool MapReference::IsBeingOnTile(int x, int y) { return GameInstance->CurrentMap->IsBeingOnTile(x,y); }

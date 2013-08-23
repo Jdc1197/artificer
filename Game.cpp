@@ -71,7 +71,7 @@ void Game::Run()
 		else
 		{
 			// Compute the FOV
-			BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), 15, CurrentMap);
+		BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), 15, CurrentMap);
 			// Draw the map
 			delete MapRenderer;
 			MapRenderer = new GraphicsMap(CurrentMap, FOVMap);
@@ -86,6 +86,17 @@ void Game::Run()
 			CurrentMenu->HandleInput(key);
 		else
 			HandleInput(key);
+		// Simulate Time
+		if (!MenuOpen && TimeEngine.IsInList(Player))
+		{
+			TimedEvent E;
+			do
+			{
+				E = TimeEngine.ExecuteNextEvent();
+				CurrentMap->ElapseTime(E.Delay);
+			} 
+			while (E.Sender != Player);
+		}
 	}
 }
 
@@ -94,6 +105,16 @@ void Game::DrawSubconsoles()
 	MapRenderer->Draw();
 	InterfaceRenderer->Draw();
 	BorderRenderer->Draw();
+}
+
+void Game::AddEvent(float delay, Message msg, Being* sender, Object* receiver)
+{
+	TimedEvent T;
+	T.Delay = delay; 
+	T.Msg = msg;
+	T.Sender = sender;
+	T.Receiver = receiver;
+	TimeEngine.AddEvent(T);
 }
 
 Being* Game::GetPlayer() { return Player; }
@@ -116,28 +137,28 @@ void Game::HandleInput(TCOD_key_t Key)
 	switch (Key.c)
 	{
 	case 'h':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()),   MOVE); 
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY())); 
 		break;
 	case 'j':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX(),Player->GetY()+1),   MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX(),Player->GetY()+1));
 		break;
 	case 'k':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX(),Player->GetY()-1),   MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX(),Player->GetY()-1));
 		break;
 	case 'l':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()),   MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()));
 		break;
 	case 'y':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()-1), MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()-1));
 		break;
 	case 'u':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()-1), MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()-1));
 		break;
 	case 'n':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()+1), MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()+1));
 		break;
 	case 'b':
-		Player->Send(CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()+1), MOVE);
+		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()+1));
 		break;
 	case 'i':
 		OpenMenu(new MenuInventory(&Player->Inv));

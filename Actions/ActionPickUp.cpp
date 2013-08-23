@@ -58,7 +58,7 @@ void ActionPickUp::Init()
 void ActionPickUp::Pickup()
 {
 	for (unsigned int i = 0; i < PickupList.size(); i++)
-		Sender->Send(PickupList[i], PICKUP);
+		Sender->Send(5.0f, PICKUP, PickupList[i]);
 }
 
 void ActionPickUp::HandleInput(TCOD_key_t key)

@@ -19,13 +19,11 @@
 */
 
 #include "Being.h"
+#include "Reference.h"
 
-Being::Being()
-{
-	this->Solid=true;
-}
+Being::Being(){}
 
-void Being::Send(Object * SentTo, Message Sending)
+void Being::Send(float delay, Message msg, Object* receiver)
 {
-	SentTo->Recieve(Sending, this);
+	GameReference::AddEvent(delay, msg, this, receiver);
 }

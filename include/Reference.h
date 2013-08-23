@@ -20,7 +20,7 @@
 
 /*
 GameReference.h
-Defines the GameReference class
+Defines the Reference, GameReference, MapReference, and InterfaceReference classes
 */
 
 #ifndef GAMEREFERENCE_H
@@ -57,6 +57,7 @@ public:
 	static void OpenMenu(Menu*);
 	static void CloseMenu();
 	static void DrawSubconsoles();
+	static void AddEvent(float, Message, Being*, Object*);
 };
 
 // class MapReference : public Reference

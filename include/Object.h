@@ -20,22 +20,25 @@
 
 #ifndef OBJECT_H
 #define OBJECT_H
+
+#include "Time.h"
 #include "Message.h"
 #include "DisplayTile.h"
 #include "SpawnIDs.h"
 
+
 // Forward Declarations
 class Being;
 
-class Object
+/// Abstract class which parents all Being, Item, and MapObject classes
+class Object : public TimableObject
 {
 protected:
-	bool Opaque, Solid;
 	short x, y;
 public:
 	Object();
 
-	// Virtual Methods
+	// Virtual Methods //
 	virtual DisplayTile GetTile();
 	virtual void Recieve(Message, Being *);
 	virtual ObjectID GetID();

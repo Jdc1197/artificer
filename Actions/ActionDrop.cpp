@@ -29,7 +29,7 @@ void ActionDrop::HandleInput(TCOD_key_t key)
 		Being * Player = GameReference::GetPlayer();
 		Item * i = Player->Inv[key.c];
 		if (i)
-			Player->Send(i, DROP);
+			Player->Send(5.0f, DROP, i);
 	}
 	GameReference::CloseMenu();
 }

@@ -23,14 +23,9 @@
 #include "Being.h"
 #include "SpawnIDs.h"
 #include "Game.h"
-#include <assert.h>
 
 
-Object::Object()
-{
-	Opaque	=	true;
-	Solid	=	true;
-}
+Object::Object() {}
 
 DisplayTile Object::GetTile()
 {

@@ -65,7 +65,6 @@ Map::~Map()
 	}
 }
 
-
 MapObject* Map::GetMapCell(int x, int y)
 {
 	// If the co-ordinates are in range
@@ -90,6 +89,16 @@ void Map::AddItem(Item * ToSpawn, int x, int y)
 {
 	ToSpawn->Move(x,y);
 	Items.push_back(ToSpawn);
+}
+
+void Map::ElapseTime(float time)
+{
+	for (unsigned int i = 0; i < Beings.size(); i++)
+		Beings[i]->ElapseTime(time);
+	for (unsigned int i = 0; i < Items.size(); i++)
+		Items[i]->ElapseTime(time);
+	for (unsigned int i = 0; i < TickMapObjects.size(); i++)
+		TickMapObjects[i]->ElapseTime(time);
 }
 
 void Map::RemoveItem(Item* ItemToRemove, bool DestroyItem = false)
