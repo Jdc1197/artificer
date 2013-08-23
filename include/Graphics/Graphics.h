@@ -30,17 +30,22 @@ enum class ScreenFlag
 	Root
 };
 
-
+/// Abstract class which parents all of the screen renderers
 class Graphics
 {
 protected:
 	// Consoles //
-	static TCODConsole* ScreenGame;			// Virtual console for the message window
-	static TCODConsole* ScreenMessages;		// Virtual console for the gameplay window
-	static TCODConsole* RootConsole;		// Virtual root console
+	/// Virtual console for the message window
+	static TCODConsole* ScreenGame;			
+	/// Virtual console for the gameplay window
+	static TCODConsole* ScreenMessages;		
+	/// Virtual root console
+	static TCODConsole* RootConsole;		
 	
 	// Methods //
+	/// Draws a DisplayTile onto a TCODConsole
 	void DrawDisplayTile(int, int, DisplayTile, TCODConsole*);
+	/// Draws a DisplayTile onto a TCODConsole
 	void DrawDisplayTile(int, int, DisplayTile);
 	TCODConsole* GetScreen(ScreenFlag);
 public:
