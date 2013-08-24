@@ -31,5 +31,6 @@ BinaryMap FOV::GetFOVMap(int x, int y, int radius, Map* m)
 	for (x = 0; x < MapWidth; x++)
 		for (y = 0; y < MapHeight; y++)
 			binmap.map[x][y] = VisionMap->isInFov(x,y);
+	delete VisionMap;
 	return binmap;
 }
