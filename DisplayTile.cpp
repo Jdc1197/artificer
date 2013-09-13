@@ -29,7 +29,7 @@ DisplayTile::DisplayTile()
 	AlphaFG = false;
 }
 
-DisplayTile::DisplayTile(char c, TCODColor Foreground, TCODColor Background )
+DisplayTile::DisplayTile(unsigned char c, TCODColor Foreground, TCODColor Background )
 {
 	Tile = c;
 	ColorFG = Foreground;
@@ -38,7 +38,7 @@ DisplayTile::DisplayTile(char c, TCODColor Foreground, TCODColor Background )
 	AlphaFG = false;
 }
 
-DisplayTile::DisplayTile(char c, TCODColor Foreground, TCODColor Background, bool BackgroundAlpha)
+DisplayTile::DisplayTile(unsigned char c, TCODColor Foreground, TCODColor Background, bool BackgroundAlpha)
 {
 	Tile = c;
 	ColorFG = Foreground;
@@ -47,7 +47,7 @@ DisplayTile::DisplayTile(char c, TCODColor Foreground, TCODColor Background, boo
 	AlphaFG = false;
 }
 
-DisplayTile::DisplayTile(char c, TCODColor Foreground, TCODColor Background, bool BackgroundAlpha, bool ForegroundAlpha)
+DisplayTile::DisplayTile(unsigned char c, TCODColor Foreground, TCODColor Background, bool BackgroundAlpha, bool ForegroundAlpha)
 {
 	Tile = c;
 	ColorFG = Foreground;
@@ -70,5 +70,5 @@ bool DisplayTile::GetForegroundAlpha() { return AlphaFG; }
 void DisplayTile::SetForegroundAlpha(bool b) { AlphaFG = b; }
 
 
-char DisplayTile::GetTile() {return Tile;}
-void DisplayTile::SetTile(char Tile) {this->Tile = Tile;}
+unsigned char DisplayTile::GetTile() {return Tile;}
+void DisplayTile::SetTile(unsigned char Tile) {this->Tile = Tile;}

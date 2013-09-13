@@ -42,7 +42,7 @@ void Graphics::Destroy()
 
 void Graphics::DrawDisplayTile(int x, int y, DisplayTile tile, TCODConsole* console)
 {
-	console->putCharEx(x, y, tile.GetTile(), tile.GetForegroundColor(), tile.GetBackgroundColor());
+	console->putCharEx(x, y, (unsigned char)tile.GetTile(), tile.GetForegroundColor(), tile.GetBackgroundColor());
 }
 
 void Graphics::DrawDisplayTile(int x, int y, DisplayTile tile)

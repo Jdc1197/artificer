@@ -26,14 +26,14 @@
 class DisplayTile
 {
 private:
-	char Tile;     // The tile character
+	unsigned char Tile;     // The tile character
 	bool AlphaBG, AlphaFG;     // Alpha flags for background and foreground - true = transparent
 	TCODColor ColorBG, ColorFG;    // The background and foreground colors
 public:
 	DisplayTile();
-	DisplayTile(char, TCODColor, TCODColor);
-	DisplayTile(char, TCODColor, TCODColor, bool);
-	DisplayTile(char, TCODColor, TCODColor, bool, bool);
+	DisplayTile(unsigned char, TCODColor, TCODColor);
+	DisplayTile(unsigned char, TCODColor, TCODColor, bool);
+	DisplayTile(unsigned char, TCODColor, TCODColor, bool, bool);
 
 	// Access Methods for ColorFG
 	TCODColor GetForegroundColor();
@@ -52,8 +52,8 @@ public:
 	void SetForegroundAlpha(bool);
 
 	// Access Methods for Tile
-	char GetTile();
-	void SetTile(char);
+	unsigned char GetTile();
+	void SetTile(unsigned char);
 };
 
 #endif
