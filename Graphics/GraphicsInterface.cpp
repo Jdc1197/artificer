@@ -24,15 +24,14 @@
 GraphicsInterface::GraphicsInterface(Interface* I)
 {
 	ToDraw = I;
-};
+}
 
 void GraphicsInterface::Draw()
 {
 	ScreenMessages->clear();
 	for (int i = 0; i < 9; i++)
 	{
-		GraphicsColoredString G(ToDraw->GetMessage(i));
-		G.Draw(0, 8-i, ScreenMessages);
+		GraphicsColoredString::Draw(ToDraw->GetMessage(i), 0, 8-i, ScreenFlag::Messages);
 	}
 	//TCODConsole::blit(ScreenMessages, 0, 0, ScreenMessages->getWidth(), ScreenMessages->getHeight(), RootConsole, 0, 0);
 }

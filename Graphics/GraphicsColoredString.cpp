@@ -20,24 +20,22 @@
 
 #include "Graphics/GraphicsColoredString.h"
 
-GraphicsColoredString::GraphicsColoredString(ColoredString coloredString)
+void GraphicsColoredString::DrawSegment(ColoredStringSegment seg, int x, int y, ScreenFlag screen)
 {
-	clstr = coloredString;
+	GetScreen(screen)->printLeft(x, y, TCOD_BKGND_NONE, "%c%c%c%c%s%c", TCOD_COLCTRL_FORE_RGB, seg.GetColor().r, seg.GetColor().g, seg.GetColor().b, seg.GetString(), TCOD_COLCTRL_STOP);
 }
 
-void GraphicsColoredString::DrawSegment(ColoredStringSegment seg, int x, int y, TCODConsole * console)
+void GraphicsColoredString::Draw(ColoredString clstr, int x, int y)
 {
-	console->printLeft(x, y, TCOD_BKGND_NONE, "%c%c%c%c%s%c", TCOD_COLCTRL_FORE_RGB, seg.GetColor().r, seg.GetColor().g, seg.GetColor().b, seg.GetString(), TCOD_COLCTRL_STOP);
+	Draw(clstr, x, y, ScreenFlag::Root);
 }
-
-void GraphicsColoredString::Draw(int x, int y) { Draw(x, y, TCODConsole::root); }
-void GraphicsColoredString::Draw(int x, int y, TCODConsole * console)
+void GraphicsColoredString::Draw(ColoredString clstr, int x, int y, ScreenFlag screen)
 {
 	int offset = 0;
 	for (unsigned int i = 0; i < clstr.GetSize(); i++)
 	{
 		ColoredStringSegment Segment = clstr.GetSegment(i);
-		DrawSegment(Segment, x+offset, y, console);
+		DrawSegment(Segment, x+offset, y, screen);
 		offset += Segment.GetLength();
 	}
 }

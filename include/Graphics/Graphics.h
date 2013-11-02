@@ -47,7 +47,7 @@ protected:
 	void DrawDisplayTile(int, int, DisplayTile, TCODConsole*);
 	/// Draws a DisplayTile onto a TCODConsole
 	void DrawDisplayTile(int, int, DisplayTile);
-	TCODConsole* GetScreen(ScreenFlag);
+	static TCODConsole* GetScreen(ScreenFlag);
 public:
 	Graphics();
 	

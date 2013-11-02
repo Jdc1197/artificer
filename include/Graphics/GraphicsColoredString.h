@@ -24,16 +24,13 @@
 #include "ColoredString.h"
 
 // class GraphicsColoredString
-// class to implement graphics with ColoredString
-class GraphicsColoredString
+// static class to implement graphics with ColoredString
+class GraphicsColoredString : public Graphics
 {
-private:
-	ColoredString clstr;
-	void DrawSegment(ColoredStringSegment, int, int, TCODConsole*);
 public:
-	GraphicsColoredString(ColoredString);
-	void Draw(int, int, TCODConsole*);
-	void Draw(int, int);
+	static void DrawSegment(ColoredStringSegment, int, int, ScreenFlag);
+	static void Draw(ColoredString, int, int, ScreenFlag);
+	static void Draw(ColoredString, int, int);
 };
 
 #endif
