@@ -1,0 +1,8 @@
+*.o
+*.html
+*.a
+*.exe
+*.dll
+*.so
+bin/artificer*
+*~

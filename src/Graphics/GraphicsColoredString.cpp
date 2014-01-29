@@ -18,18 +18,24 @@
 	Contact Jdc1197 by email at: Jdc1197@gmail.com
 */
 
-#include <Windows.h>
-#include <libtcod.hpp>
-#include "Game.h"
-#include "Reference.h"
+#include "Graphics/GraphicsColoredString.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+void GraphicsColoredString::DrawSegment(ColoredStringSegment seg, int x, int y, ScreenFlag screen)
 {
-	TCODConsole::setCustomFont("terminal8x12_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW );
-	TCODConsole::initRoot(80, 50, "Artificer: Pre-alpha", false);
+	GetScreen(screen)->printEx(x, y, TCOD_BKGND_NONE, TCOD_LEFT, "%c%c%c%c%s%c", TCOD_COLCTRL_FORE_RGB, seg.GetColor().r, seg.GetColor().g, seg.GetColor().b, seg.GetString(), TCOD_COLCTRL_STOP);
+}
 
-	Game CurrentInstance;
-	Reference::SetGameInstance(&CurrentInstance);
-	CurrentInstance.Run();
-	return 4;
+void GraphicsColoredString::Draw(ColoredString clstr, int x, int y)
+{
+	Draw(clstr, x, y, ScreenFlag::Root);
+}
+void GraphicsColoredString::Draw(ColoredString clstr, int x, int y, ScreenFlag screen)
+{
+	int offset = 0;
+	for (unsigned int i = 0; i < clstr.GetSize(); i++)
+	{
+		ColoredStringSegment Segment = clstr.GetSegment(i);
+		DrawSegment(Segment, x+offset, y, screen);
+		offset += Segment.GetLength();
+	}
 }

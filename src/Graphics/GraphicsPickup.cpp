@@ -18,24 +18,31 @@
 	Contact Jdc1197 by email at: Jdc1197@gmail.com
 */
 
-#include "Graphics/GraphicsColoredString.h"
+#include "Graphics/GraphicsPickup.h"
+#include "Inventory.h"
 
-void GraphicsColoredString::DrawSegment(ColoredStringSegment seg, int x, int y, ScreenFlag screen)
+
+
+GraphicsPickup::GraphicsPickup(vector<Item*> Items, vector<Item*>* Pickup)
 {
-	GetScreen(screen)->printLeft(x, y, TCOD_BKGND_NONE, "%c%c%c%c%s%c", TCOD_COLCTRL_FORE_RGB, seg.GetColor().r, seg.GetColor().g, seg.GetColor().b, seg.GetString(), TCOD_COLCTRL_STOP);
+	this->ItemList = Items;
+	this->PickupList = Pickup;
 }
 
-void GraphicsColoredString::Draw(ColoredString clstr, int x, int y)
+void GraphicsPickup::Draw()
 {
-	Draw(clstr, x, y, ScreenFlag::Root);
-}
-void GraphicsColoredString::Draw(ColoredString clstr, int x, int y, ScreenFlag screen)
-{
-	int offset = 0;
-	for (unsigned int i = 0; i < clstr.GetSize(); i++)
+	RootConsole->clear();
+	RootConsole->printEx(0, 0, TCOD_BKGND_NONE, TCOD_LEFT,  "Inventory - Pick up items");
+	
+	// Print items
+	for (unsigned int i = 0; i < ItemList.size(); i++)
 	{
-		ColoredStringSegment Segment = clstr.GetSegment(i);
-		DrawSegment(Segment, x+offset, y, screen);
-		offset += Segment.GetLength();
+		char Seperator = '-';  // seperator between the item and identifier
+		char Identifier = Inventory::GenerateIdentifier(i);
+		
+		Item * I = ItemList[i];
+		if (IsInList<Item*>(PickupList, I))
+			Seperator = '+';
+		RootConsole->printEx(0, i+2, TCOD_BKGND_NONE, TCOD_LEFT, "%c %c %s", Identifier, Seperator, I->GetFullName());
 	}
 }

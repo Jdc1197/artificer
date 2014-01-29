@@ -38,10 +38,10 @@ void GraphicsDrop::Draw()
 		char lowest, highest;
 		lowest = Inv->GetLowestIdentifier();
 		highest = Inv->GetHighestIdentifier();
-		RootConsole->printLeft(1, 10, TCOD_BKGND_SET, "What do you wish to drop? (%c-%c)", lowest, highest);
+		RootConsole->printEx(1, 10, TCOD_BKGND_SET, TCOD_LEFT, "What do you wish to drop? (%c-%c)", lowest, highest);
 	}
 	else
-		RootConsole->printLeft(1, 10, TCOD_BKGND_SET, "What do you wish to drop? (Empty)");
+		RootConsole->printEx(1, 10, TCOD_BKGND_SET, TCOD_LEFT, "What do you wish to drop? (Empty)");
 	
 
 }

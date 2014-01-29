@@ -31,13 +31,13 @@ void GraphicsInventory::Draw()
 {
 	RootConsole->clear();
 	// Print inventory capacity
-	RootConsole->printLeft(0, 0, TCOD_BKGND_NONE, "Inventory - %d/%d          %s", inv->GetSize(), inv->GetCapacity(), title);
+	RootConsole->printEx(0, 0, TCOD_BKGND_NONE, TCOD_LEFT, "Inventory - %d/%d          %s", inv->GetSize(), inv->GetCapacity(), title);
 	// Print items
 	for (int i = 0; i < inv->GetSize(); i++)
 	{
 		Item * I = inv->GetItem(i);
 		char C = inv->GetIdentifier(i);
-		RootConsole->printLeft(0, i+2, TCOD_BKGND_NONE, "%c - %s", C, I->GetFullName());
+		RootConsole->printEx(0, i+2, TCOD_BKGND_NONE, TCOD_LEFT, "%c - %s", C, I->GetFullName());
 	}
 }
 
@@ -45,7 +45,7 @@ void GraphicsInventory::Draw()
 {
 	RootConsole->clear();
 	// Print inventory capacity
-	Console->printLeft(0, 0, TCOD_BKGND_NONE, "Inventory - %d/%d          %s", Inv->GetSize(), Inv->GetCapacity(), ActionString);
+	Console->printEx(0, 0, TCOD_BKGND_NONE,TCOD_LEFT, "Inventory - %d/%d          %s", Inv->GetSize(), Inv->GetCapacity(), ActionString);
 	// Print items
 	for (int i = 0; i < Inv->GetSize(); i++)
 		{

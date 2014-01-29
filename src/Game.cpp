@@ -50,6 +50,7 @@ Game::Game()
 	Graphics::Init();
 	InterfaceRenderer = new GraphicsInterface(&GameInterface);
 	BorderRenderer = new GraphicsBorders();
+	MapRenderer = nullptr;
 }
 
 Game::~Game()
@@ -73,7 +74,7 @@ void Game::Run()
 			// Compute the FOV
 		BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), 15, CurrentMap);
 			// Draw the map
-			delete MapRenderer;
+			if (MapRenderer) delete MapRenderer;
 			MapRenderer = new GraphicsMap(CurrentMap, FOVMap);
 			DrawSubconsoles();
 			Graphics::BlitSubconsoles();
@@ -81,7 +82,8 @@ void Game::Run()
 		// Flush and Displays the screen
 		Graphics::FlushRoot();
 		
-		TCOD_key_t key = TCODConsole::waitForKeypress(true);
+		TCOD_key_t key;
+		TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &key, nullptr, true);
 		if (MenuOpen)
 			CurrentMenu->HandleInput(key);
 		else

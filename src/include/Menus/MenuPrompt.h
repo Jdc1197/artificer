@@ -27,8 +27,8 @@
 class MenuPrompt : public Menu
 {
 public:
-	virtual void HandleInput(TCOD_key_t);
-	virtual void Draw();
+	virtual void HandleInput(TCOD_key_t)=0;
+	virtual void Draw()=0;
 };
 
 /// An "AnyKey" prompt, such as "Press any key to continue..."

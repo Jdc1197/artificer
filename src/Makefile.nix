@@ -2,7 +2,7 @@
 # Directories #
 SRCDIR=.
 INCDIR=../include
-TCODDIR=../include/libtcod1.5.0
+TCODDIR=../include/libtcod1.5.1
 
 OBJDIR=../objs
 
@@ -40,11 +40,12 @@ all : release
 
 #Debug Build#
 debug : $(OBJS)
-	$(CPP) $(OBJS) -g -o ../bin/artificer_d.exe -mwindows -L../lib -ltcod-mingw-debug
+	$(CPP) $(OBJS) -g -o ../bin/artificer_d -ltcod_debug -ltcodxx_debug
 
 #Release Build#
 release : $(OBJS)
-	$(CPP) $(OBJS) $(OBJDIR)/icon.res -O3 -o ../bin/artificer.exe -mwindows -L../lib -ltcod-mingw
+	$(CPP) $(OBJS) -O3 -o ../bin/artificer -ltcod -ltcodxx 
+
 
 rebuild: rebuild_release
 
@@ -58,8 +59,10 @@ clean : clean_objs clean_bin
 clean_objs:
 	rm -f $(OBJS)
 clean_bin:
-	rm -f ../bin/scourge_of_westnor.exe
-	rm -f ../bin/scourge_of_westnor_d.exe
+	rm -f ../bin/artificer.exe
+	rm -f ../bin/artificer_d.exe
+	rm -f ../bin/artificer
+	rm -f ../bin/artificer_d
 	
 	
 #Documentation#

@@ -18,31 +18,25 @@
 	Contact Jdc1197 by email at: Jdc1197@gmail.com
 */
 
-#include "Graphics/GraphicsPickup.h"
-#include "Inventory.h"
+#ifdef WIN32
+#include <Windows.h>
+#endif
 
+#include <libtcod.hpp>
+#include "Game.h"
+#include "Reference.h"
 
-
-GraphicsPickup::GraphicsPickup(vector<Item*> Items, vector<Item*>* Pickup)
+#ifdef WIN32
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+#else
+int main()
+#endif
 {
-	this->ItemList = Items;
-	this->PickupList = Pickup;
-}
+	TCODConsole::setCustomFont("terminal8x12_gs_ro.png", TCOD_FONT_LAYOUT_ASCII_INROW );
+	TCODConsole::initRoot(80, 50, "Artificer: Pre-alpha", false);
 
-void GraphicsPickup::Draw()
-{
-	RootConsole->clear();
-	RootConsole->printLeft(0, 0, TCOD_BKGND_NONE, "Inventory - Pick up items");
-	
-	// Print items
-	for (unsigned int i = 0; i < ItemList.size(); i++)
-	{
-		char Seperator = '-';  // seperator between the item and identifier
-		char Identifier = Inventory::GenerateIdentifier(i);
-		
-		Item * I = ItemList[i];
-		if (IsInList<Item*>(PickupList, I))
-			Seperator = '+';
-		RootConsole->printLeft(0, i+2, TCOD_BKGND_NONE, "%c %c %s", Identifier, Seperator, I->GetFullName());
-	}
+	Game CurrentInstance;
+	Reference::SetGameInstance(&CurrentInstance);
+	CurrentInstance.Run();
+	return 4;
 }
