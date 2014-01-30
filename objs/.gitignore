@@ -1,0 +1,6 @@
+*.res
+# Except this file
+!.gitignore
+# #
+# Thanks to Jamie Flournoy at stackoverflow.com for this one.
+# #

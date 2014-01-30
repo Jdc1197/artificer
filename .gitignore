@@ -1,8 +1,12 @@
+# Object files
 *.o
+# Documentation files (ie HTML)
 *.html
+# Binaries/ Libraries.
 *.a
 *.exe
 *.dll
 *.so
 bin/artificer*
+# Damn you gedit and your stupid backup files
 *~
