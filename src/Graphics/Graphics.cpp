@@ -19,6 +19,7 @@
 */
 
 #include "Graphics/Graphics.h"
+#include "Map.h"
 
 TCODConsole* Graphics::ScreenGame;
 TCODConsole* Graphics::ScreenMessages;
@@ -28,8 +29,8 @@ Graphics::Graphics() {}
 
 void Graphics::Init()
 {
-	ScreenGame = new TCODConsole(80, 40);
-	ScreenMessages = new TCODConsole(78, 10);
+	ScreenGame = new TCODConsole(MapWidth, MapHeight);
+	ScreenMessages = new TCODConsole(78, 9);
 	RootConsole = new TCODConsole(80, 50);
 }
 
@@ -64,7 +65,7 @@ TCODConsole* Graphics::GetScreen(ScreenFlag ID)
 void Graphics::BlitSubconsoles()
 {
 	TCODConsole::blit(ScreenMessages, 0, 0, ScreenMessages->getWidth(), ScreenMessages->getHeight(), RootConsole, 1, 1);
-	TCODConsole::blit(ScreenGame, 0, 0, ScreenGame->getWidth(), ScreenGame->getHeight(), RootConsole, 0, 10);
+	TCODConsole::blit(ScreenGame, 0, 0, ScreenGame->getWidth(), ScreenGame->getHeight(), RootConsole, 1, 11);
 }
 
 void Graphics::FlushRoot()

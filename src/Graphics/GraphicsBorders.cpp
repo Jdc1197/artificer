@@ -19,6 +19,7 @@
 */
 
 #include "Graphics/GraphicsBorders.h"
+#include "Map.h"
 
 GraphicsBorders::GraphicsBorders() {}
 void GraphicsBorders::Draw()
@@ -27,6 +28,7 @@ void GraphicsBorders::Draw()
 	for (int x = 0; x < 80; x++) // Top //
 	{
 		DrawDisplayTile(x, 0, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole);
+		DrawDisplayTile(x, 10, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole); // Note: This line is under ScreenMessages and above ScreenGame
 	}
 
 	for (int y = 0; y < 10; y++) // Sides //
@@ -34,4 +36,15 @@ void GraphicsBorders::Draw()
 		DrawDisplayTile(0, y, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole);
 		DrawDisplayTile(80-1, y, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole);
 	}
+	
+	// Around the game screen
+	
+	for (int y = 0; y < MapHeight+2; y++) // Sides //
+	{
+		DrawDisplayTile(0, y+10, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole);
+		DrawDisplayTile(80-1, y+10, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole);
+	}
+	
+	for (int x = 0; x < MapWidth+2; x++)
+		DrawDisplayTile(x, 49, DisplayTile('#', TCODColor::white, TCODColor::white), RootConsole);
 }

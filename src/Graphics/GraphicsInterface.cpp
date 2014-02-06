@@ -33,5 +33,4 @@ void GraphicsInterface::Draw()
 	{
 		GraphicsColoredString::Draw(ToDraw->GetMessage(i), 0, 8-i, ScreenFlag::Messages);
 	}
-	//TCODConsole::blit(ScreenMessages, 0, 0, ScreenMessages->getWidth(), ScreenMessages->getHeight(), RootConsole, 0, 0);
 }

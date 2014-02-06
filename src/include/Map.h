@@ -27,8 +27,8 @@
 #include <vector>
 using namespace std;
 
-const int MapWidth = 80;
-const int MapHeight = 40;
+const int MapWidth = 78;
+const int MapHeight = 38;
 
 /// A Map container which store binary information rather than actual MapObjects
 struct BinaryMap
