@@ -43,7 +43,7 @@ void Floor::Recieve(Message msg, Being * Sender)
 
 DisplayTile Floor::GetTile()
 {
-	return DisplayTile('.', TCODColor::white, TCODColor::black);
+	return DisplayTile('.', TCODColor(45,45,45), TCODColor(23,23,23));
 }
 
 std::string Floor::MakeItemList()
