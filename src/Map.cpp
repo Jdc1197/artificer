@@ -29,6 +29,8 @@ void BuildTCODMap(Map* m, TCODMap* tcodmap)
 			tcodmap->setProperties(x,y, m->GetMapCell(x,y)->GetTransparent(), m->GetMapCell(x,y)->GetWalkable());
 }
 
+bool IsOOB(int x, int y) {return (x < 0 || x >= MapWidth || y < 0 || y >= MapHeight);}
+
 Map::Map() {}
 Map::~Map()
 {

@@ -139,28 +139,36 @@ void Game::HandleInput(TCOD_key_t Key)
 	switch (Key.c)
 	{
 	case 'h':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY())); 
+		if (!IsOOB(Player->GetX()-1,Player->GetY()))	
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY())); 
 		break;
 	case 'j':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX(),Player->GetY()+1));
+		if (!IsOOB(Player->GetX(),Player->GetY()+1))	
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX(),Player->GetY()+1));
 		break;
 	case 'k':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX(),Player->GetY()-1));
+		if (!IsOOB(Player->GetX(),Player->GetY()-1))	
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX(),Player->GetY()-1));
 		break;
 	case 'l':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()));
+		if (!IsOOB(Player->GetX()+1,Player->GetY()))
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()));
 		break;
 	case 'y':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()-1));
+		if (!IsOOB(Player->GetX()-1,Player->GetY()-1))
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()-1));
 		break;
 	case 'u':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()-1));
+		if (!IsOOB(Player->GetX()+1,Player->GetY()-1))
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()-1));
 		break;
 	case 'n':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()+1));
+		if (!IsOOB(Player->GetX()+1,Player->GetY()+1))
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()+1,Player->GetY()+1));
 		break;
 	case 'b':
-		Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()+1));
+		if (!IsOOB(Player->GetX()-1,Player->GetY()+1))
+			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()+1));
 		break;
 	case 'i':
 		OpenMenu(new MenuInventory(&Player->Inv));

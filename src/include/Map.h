@@ -85,5 +85,7 @@ public:
 };
 
 void BuildTCODMap(Map*, TCODMap*);
+/// Checks if a coordinate is out of bounds
+bool IsOOB(int x, int y);
 
 #endif
