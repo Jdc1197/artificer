@@ -72,9 +72,12 @@ void Game::Run()
 		else
 		{
 			// Compute the FOV
-		BinaryMap FOVMap = FOV::GetFOVMap(Player->GetX(), Player->GetY(), 15, CurrentMap);
+			BinaryMap FOVMap = FOV::GetFOVMap(	Player->GetX(),
+								Player->GetY(),
+								15,
+								CurrentMap);
 			// Draw the map
-			if (MapRenderer) delete MapRenderer;
+			if (MapRenderer) delete MapRenderer; MapRenderer = 0;
 			MapRenderer = new GraphicsMap(CurrentMap, FOVMap);
 			// Render the subconsoles and blit them to root
 			DrawSubconsoles();
