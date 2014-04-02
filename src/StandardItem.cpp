@@ -33,12 +33,12 @@ void StandardItem::PlaceInInventory(Inventory * ToPlaceInto)
 
 void StandardItem::GetPickedUp(Being * B)
 {
-	if (B->Inv.GetSize() != B->Inv.GetCapacity())
+	if (B->GetInventory()->GetSize() != B->GetInventory()->GetCapacity())
 	{
 		std::ostringstream str;
 		str << "You pick up " << this->GetShortName() << ".";
 		InterfaceReference::AddMessage(&str);
-		PlaceInInventory(&B->Inv);
+		PlaceInInventory(B->GetInventory());
 	}
 	else
 		InterfaceReference::AddMessage("You cannot pick up this item, your inventory is full");
@@ -46,7 +46,7 @@ void StandardItem::GetPickedUp(Being * B)
 
 void StandardItem::GetPlaced(Being * B)
 {
-	B->Inv.RemoveItem(this, false);
+	B->GetInventory()->RemoveItem(this, false);
 	MapReference::AddItem(this, B->GetX(), B->GetY());
 	std::ostringstream str;
 	str << "You drop " << this->GetShortName() << ".";

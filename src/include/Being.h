@@ -26,6 +26,8 @@
 
 class Being : public Object
 {
+private:
+	Inventory Inv;
 public:
 	// Constructors //	
 	Being();
@@ -33,7 +35,8 @@ public:
 	// Methods //	
 	/// Sends a message to another object.
 	void Send(float, Message, Object*);
-	Inventory Inv;
+	// Acess Methods //
+	Inventory* GetInventory();
 };
 
 #endif

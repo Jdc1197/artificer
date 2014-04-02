@@ -26,4 +26,7 @@ Being::Being(){}
 void Being::Send(float delay, Message msg, Object* receiver)
 {
 	GameReference::AddEvent(delay, msg, this, receiver);
+Inventory* Being::GetInventory()
+{
+	return &Inv;
 }

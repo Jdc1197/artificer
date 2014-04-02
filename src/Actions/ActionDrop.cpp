@@ -27,8 +27,9 @@ void ActionDrop::HandleInput(TCOD_key_t key)
 	// Cancels operation when escape key is pressed	
 	if (key.vk != TCODK_ESCAPE)
 	{
-		Being * Player = GameReference::GetPlayer();
-		Item * i = Player->Inv[key.c];
+		Being* Player = GameReference::GetPlayer();
+		Inventory* inv = Player->GetInventory();	
+		Item* i = (*inv)[key.c];
 		if (i)
 			Player->Send(5.0f, DROP, i);
 	}
@@ -37,6 +38,6 @@ void ActionDrop::HandleInput(TCOD_key_t key)
 
 void ActionDrop::Draw()
 {
-	GraphicsDrop Renderer(&GameReference::GetPlayer()->Inv);
+	GraphicsDrop Renderer(GameReference::GetPlayer()->GetInventory());
 	Renderer.Draw();
 }
