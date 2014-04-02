@@ -176,7 +176,7 @@ void Game::HandleInput(TCOD_key_t Key)
 			Player->Send(5.0f, MOVE, CurrentMap->GetMapCell(Player->GetX()-1,Player->GetY()+1));
 		break;
 	case 'i':
-		OpenMenu(new MenuInventory(&Player->Inv));
+		OpenMenu(new MenuInventory(Player->GetInventory()));
 		break;
 	case 'g':
 		OpenMenu(new ActionPickUp(Player->GetX(), Player->GetY(), Player));	
