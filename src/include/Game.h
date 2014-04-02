@@ -64,6 +64,8 @@ public:
 	void CloseMenu();
 	
 	// Graphics Methods
+	/// A function which draws the subconsoles (i.e. map, messages, status)
+	/// onto their respective virtual consoles.	
 	void DrawSubconsoles();
 	
 	// Time Methods

@@ -76,12 +76,13 @@ void Game::Run()
 			// Draw the map
 			if (MapRenderer) delete MapRenderer;
 			MapRenderer = new GraphicsMap(CurrentMap, FOVMap);
+			// Render the subconsoles and blit them to root
 			DrawSubconsoles();
 			Graphics::BlitSubconsoles();
 		}
 		// Flush and Displays the screen
 		Graphics::FlushRoot();
-		
+		// Wait for a keypress and handle accordingly.	
 		TCOD_key_t key;
 		TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &key, nullptr, true);
 		if (MenuOpen)
@@ -91,6 +92,10 @@ void Game::Run()
 		// Simulate Time
 		if (!MenuOpen && TimeEngine.IsInList(Player))
 		{
+			// Simulate timed events until the player's event is done,
+			// at which point we would exit the loop,
+			// and wait for another keypress
+			// from the user.
 			TimedEvent E;
 			do
 			{

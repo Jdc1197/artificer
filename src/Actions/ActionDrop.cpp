@@ -24,7 +24,8 @@
 
 void ActionDrop::HandleInput(TCOD_key_t key)
 {
-	if (key.vk != TCODK_ESCAPE)			// Cancels operation when escape is pressed
+	// Cancels operation when escape key is pressed	
+	if (key.vk != TCODK_ESCAPE)
 	{
 		Being * Player = GameReference::GetPlayer();
 		Item * i = Player->Inv[key.c];

@@ -27,7 +27,11 @@
 class Being : public Object
 {
 public:
+	// Constructors //	
 	Being();
+
+	// Methods //	
+	/// Sends a message to another object.
 	void Send(float, Message, Object*);
 	Inventory Inv;
 };
