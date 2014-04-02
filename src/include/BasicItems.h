@@ -32,7 +32,7 @@ public:
 	
 	// Inherited Methods
 	virtual DisplayTile GetTile();
-	virtual void Recieve(Message, Being *);
+	virtual void Receive(Message, Being *);
 	virtual ObjectID GetID();
 	virtual const char * GetFullName();
 	virtual const char * GetShortName();

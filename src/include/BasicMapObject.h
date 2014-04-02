@@ -31,7 +31,7 @@ private:
 public:
 	Floor();
 	virtual DisplayTile GetTile();
-	virtual void Recieve(Message, Being *);
+	virtual void Receive(Message, Being *);
 };
 
 
@@ -40,7 +40,7 @@ class Wall : public MapObject
 public:
 	Wall();
 	virtual DisplayTile GetTile();
-	virtual void Recieve(Message, Being *);
+	virtual void Receive(Message, Being *);
 	virtual bool GetTransparent();
 };
 
@@ -51,7 +51,7 @@ private:
 public:
 	Door();
 	virtual DisplayTile GetTile();
-	virtual void Recieve(Message, Being *);
+	virtual void Receive(Message, Being *);
 };
 
 #endif

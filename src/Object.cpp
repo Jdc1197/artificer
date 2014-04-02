@@ -31,10 +31,9 @@ DisplayTile Object::GetTile()
 {
 	return DisplayTile('`', TCODColor::black, TCODColor::blue) ;
 }
-void Object::Recieve(Message msg, Being * Sender)
-{
-	return;
-}
+
+void Object::Receive(Message msg, Being * Sender){}
+
 ObjectID Object::GetID()
 {
 	return ObjectAbstract;

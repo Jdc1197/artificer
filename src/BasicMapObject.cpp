@@ -28,7 +28,7 @@
 
 // Floors
 Floor::Floor() {}
-void Floor::Recieve(Message msg, Being * Sender)
+void Floor::Receive(Message msg, Being * Sender)
 {
 	if (msg.Type == MOVE)
 	{
@@ -67,7 +67,7 @@ std::string Floor::MakeItemList()
 // Walls
 Wall::Wall() {}
 
-void Wall::Recieve(Message msg, Being * Sender)
+void Wall::Receive(Message msg, Being * Sender)
 {
 	if (msg.Type == MOVE)
 		InterfaceReference::AddMessage("Ouch! You bump into a wall.");
@@ -87,7 +87,7 @@ Door::Door()
 	Open = false;
 }
 
-void Door::Recieve(Message msg, Being * Sender)
+void Door::Receive(Message msg, Being * Sender)
 {
 	if (msg.Type == MOVE)
 		if (Open)

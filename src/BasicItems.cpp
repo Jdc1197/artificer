@@ -31,7 +31,7 @@ Weapon::Weapon(int Attack)
 	this->Attack = Attack; 
 }
 
-void Weapon::Recieve(Message msg, Being * Sender)
+void Weapon::Receive(Message msg, Being * Sender)
 {
 	if (msg.Type == DROP)
 		this->GetPlaced(Sender);

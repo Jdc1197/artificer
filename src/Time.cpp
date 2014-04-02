@@ -40,7 +40,7 @@ void TimeManager::AddEvent(TimedEvent Evnt)
 TimedEvent TimeManager::ExecuteNextEvent()
 {
 	// Send the message
-	EventList[0].Receiver->Recieve(EventList[0].Msg, EventList[0].Sender);
+	EventList[0].Receiver->Receive(EventList[0].Msg, EventList[0].Sender);
 	// Decrease the delay of the rest of the list.
 	for (unsigned int i = 1; i < EventList.size(); i++)
 			EventList[i].Delay -= EventList[0].Delay;

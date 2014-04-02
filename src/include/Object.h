@@ -40,7 +40,7 @@ public:
 
 	// Virtual Methods //
 	virtual DisplayTile GetTile();
-	virtual void Recieve(Message, Being *);
+	virtual void Receive(Message, Being *);
 	virtual ObjectID GetID();
 	
 	// Movement //
