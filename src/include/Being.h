@@ -35,6 +35,10 @@ public:
 	// Methods //	
 	/// Sends a message to another object.
 	void Send(float, Message, Object*);
+	/// Sends a message to another object,
+	/// bypassing the time engine.
+	void SendRaw(Message, Object*);
+
 	// Acess Methods //
 	Inventory* GetInventory();
 };
